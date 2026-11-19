@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shuv privacy policy.">
+  <title>Shuv Privacy Policy</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+  <div class="eyebrow">Last updated November 19, 2026</div>
+  <h1>Shuv privacy policy</h1>
+  <p>Shuv is a two-way notification service: software agents you authorize send you short messages (“Shuvs”) through the Shuv API, and you can read and reply to them in the Shuv Android app (package <code>app.shuv.android</code>). Shuv is provided by <strong>13bfc3s</strong>. This policy covers the Android app and the Shuv API. Shuv is currently an invite-only beta.</p>
+
+  <h2>Information we collect</h2>
+  <ul>
+    <li><strong>Account information.</strong> When you sign in with Google, we receive your email address and a Firebase account identifier from Google. We use them to identify your account and check that it is invited to the beta. We do not receive your Google password or request access to your Google data beyond basic sign-in (email and profile).</li>
+    <li><strong>Message content.</strong> The title and body of each Shuv that your agents send, its priority and delivery status, and any reply you send from the app. Message content is not end-to-end encrypted: our server and our push provider can technically read it. Do not send passwords, payment details, health information or other sensitive data in a Shuv.</li>
+    <li><strong>Device information.</strong> When you connect a phone, we store a push-notification token (encrypted on our server), a random device identifier and a hashed device credential so we can deliver Shuvs to that phone and accept replies from it.</li>
+    <li><strong>API keys.</strong> The name, permissions, expiry and last-used time of each API key you create. We store only a one-way hash of each key, never the key itself.</li>
+    <li><strong>Operational records.</strong> Timestamps, usage credits, rate-limit counters and a security log of account actions (for example, “API key created” or “device revoked”). The security log records what happened, not message content.</li>
+    <li><strong>Network data.</strong> Our hosting provider processes your IP address and basic request information to deliver the service and protect it from abuse.</li>
+  </ul>
+  <p>Shuv does not use advertising, advertising identifiers, analytics or tracking, and it does not sell or rent personal information. It does not access your location, contacts, photos, microphone or camera.</p>
+
+  <h2>How we use information</h2>
+  <p>We use the information above only to provide Shuv: to authenticate you, deliver Shuvs to your phone, return your replies to the agent that sent them, enforce usage limits, prevent abuse, keep the service secure and provide support. We do not use message content for advertising or to train machine-learning models.</p>
+
+  <h2>Service providers</h2>
+  <p>We share information only with the providers that run Shuv, and only for that purpose:</p>
+  <ul>
+    <li><strong>Google (Firebase Authentication and Firebase Cloud Messaging)</strong> for Google sign-in and push delivery. The Shuv’s title, body and identifiers are sent through Firebase Cloud Messaging to reach your phone. See <a href="https://policies.google.com/privacy">Google’s privacy policy</a>.</li>
+    <li><strong>Cloudflare (Workers and D1)</strong> hosts the Shuv API and its database. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>.</li>
+  </ul>
+  <p>We may also disclose information if required by law or to protect the safety or security of users or the service. All data is sent over encrypted HTTPS connections.</p>
+
+  <h2>Data stored on your device</h2>
+  <p>The app keeps your Shuv history (titles, bodies and your replies) and its device credential on your phone, encrypted with a key held in the Android Keystore. Android cloud backup is disabled for Shuv. Uninstalling the app or clearing its storage removes this local data.</p>
+  <p>If Google sign-in fails, the app can build a connection diagnostics report. The report is created on your phone and copied only when you tap the copy button; it is never uploaded automatically. It contains app and device version details, the app’s public configuration and error codes, and no account details, tokens or message content.</p>
+
+  <h2>Permissions</h2>
+  <p>Shuv asks for notification permission on Android 13 and later so it can show incoming Shuvs. It uses internet access to talk to the Shuv API and network-state access to report whether you are online in its diagnostics.</p>
+
+  <h2>Retention and deletion</h2>
+  <p>We keep account information, Shuvs and replies while your account is active so they can appear in your history and be returned to your agents. You can revoke API keys and disconnect a phone from inside the app at any time; signing out revokes that phone on our server. To delete your account and the data associated with it, email us from the address you sign in with. We will delete it within 30 days, except where we must keep limited records to meet legal obligations or prevent abuse. You can also ask us for a copy of your data or to correct it.</p>
+
+  <h2>Children</h2>
+  <p>Shuv is not directed to children under 13, and we do not knowingly collect information from them.</p>
+
+  <h2>Changes</h2>
+  <p>We will publish material changes on this page and update the date above. Paid plans are not yet offered; if we add them, this policy will be updated before any payment information is collected.</p>
+
+  <h2>Contact</h2>
+  <p>Privacy, deletion and support requests: <a href="mailto:c4xbrx4lc@mozmail.com">c4xbrx4lc@mozmail.com</a></p>
+
+  <footer>© 2026 13bfc3s · <a href="../">All privacy policies</a></footer>
+</main>
+</body>
+</html>
