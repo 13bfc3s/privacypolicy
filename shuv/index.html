@@ -8,10 +8,10 @@
 </head>
 <body>
 <main>
-<nav class="top"><b>SHUV</b><a href="https://shuv.cloud/docs">API docs</a><a href="https://shuv.cloud/privacy">Privacy</a><a href="https://shuv.cloud/delete">Delete your account</a></nav>
-<div class="eyebrow">Also published at <a href="https://shuv.cloud/privacy">shuv.cloud/privacy</a> · Last updated November 20, 2026</div>
+<nav class="top"><b>SHUV</b><a href="https://shuv.cloud/docs">API docs</a><a href="https://shuv.cloud/terms">Terms</a><a href="https://shuv.cloud/privacy">Privacy</a><a href="https://shuv.cloud/delete">Delete your account</a></nav>
+<div class="eyebrow">Also published at <a href="https://shuv.cloud/privacy">shuv.cloud/privacy</a> · Last updated November 22, 2026</div>
 <h1>Shuv privacy policy</h1>
-<p>Shuv is a two-way notification service. Software agents you authorize send you short messages (“Shuvs”) through the Shuv API, and you read and reply to them in the Shuv Android app (package <code>app.shuv.android</code>) or the Shuv web portal. Shuv is developed and operated by <strong>13bfc3s</strong>, the developer named on Shuv’s Google Play listing. This policy covers the Android app, the web portal and the Shuv API. Shuv is currently an invite-only beta.</p>
+<p>Shuv is a two-way notification service. Software agents you authorize send you short messages (“Shuvs”) through the Shuv API, and you read and reply to them in the Shuv Android app (package <code>app.shuv.android</code>) or the Shuv web portal. Shuv is developed and operated by <strong>13bfc3s</strong>, the developer named on Shuv’s Google Play listing. This policy covers the Android app, the web portal and the Shuv API; the <a href="https://shuv.cloud/terms">terms of service</a> cover how you may use them. Shuv is currently an invite-only beta.</p>
 <div class="box"><strong>Want to delete your account?</strong> See <a href="https://shuv.cloud/delete">Delete your Shuv account</a> for the steps, what is deleted and what is kept.</div>
 
 <h2>Information we collect</h2>
@@ -20,11 +20,11 @@
 <p>If you sign in without an invite, we keep your email on a waitlist so we can invite you later. Our support staff may add short internal notes or labels to your account (for example, “beta tester”). These are used only to run the service.</p>
 <h3>Messages</h3>
 <p>The title and body of each Shuv your agents send, its priority and delivery status, and any reply you send. <strong>Standard Shuvs are not end-to-end encrypted:</strong> our server, and Google’s push service while delivering them, can technically read them. Do not put passwords, payment details, health information or other sensitive data in a standard Shuv.</p>
-<p><strong>Optional end-to-end encryption (preview).</strong> You can turn on encryption for a phone in the app. The phone then publishes a public key, and agents that support it encrypt each Shuv to that key before sending, so Shuv stores and forwards only ciphertext it cannot read. Replies to encrypted Shuvs can be encrypted back to the agent. Shuv still sees metadata: which account and phone a Shuv is for, when it was sent, its size, priority and delivery status. Encryption is a preview that has not been independently reviewed.</p>
+<p><strong>End-to-end encryption (on by default in Shuv’s tools).</strong> Each phone publishes a public key. The <code>shuv</code> command, the Claude Code and Codex plugins and the Python SDK encrypt each Shuv to that key before sending (HPKE with X25519 and AES-256-GCM), so Shuv stores and forwards only ciphertext it cannot read, and your replies are encrypted back to the sender. Shuvs sent by other means, such as plain HTTP calls, are standard Shuvs as described above. Shuv still sees metadata: which account and phone a Shuv is for, the sending key’s name, when it was sent, its size, priority and delivery status. Shuv’s end-to-end encryption has not yet been independently reviewed.</p>
 <h3>Phones and API keys</h3>
 <p>When you connect a phone, we store its push-notification token (encrypted on our server), a random device ID, a one-way hash of the phone’s credential and, if you turned on encryption, its public key. The app also sends Android’s app-specific device ID (ANDROID_ID); we keep only a one-way keyed hash of it, used only to stop a phone banned for abuse from reconnecting. For each API key you create we store its name, permissions, expiry and last-used time, and only a one-way hash of the key itself.</p>
 <h3>Purchases</h3>
-<p>Paid plans are being tested and are not yet available to the public; no real payments are taken until they launch. Payments are handled by <strong>Stripe</strong>, which acts as the merchant of record: Stripe collects your card or other payment details, billing address and email, and calculates and collects sales tax. Shuv never sees your full card number. Shuv receives and stores your Stripe customer ID, subscription status and renewal date, and for each credit-pack purchase the amount, date, status and credits granted, so we can apply your plan and show your purchase history.</p>
+<p>Payments are handled by <strong>Stripe</strong>, which acts as the merchant of record: Stripe collects your card or other payment details, billing address and email, and calculates and collects sales tax. Shuv never sees your full card number. Shuv receives and stores your Stripe customer ID, subscription status and renewal date, and for each credit-pack purchase the amount, date, status and credits granted, so we can apply your plan and show your purchase history.</p>
 <h3>Usage, diagnostics and security records</h3>
 <ul>
   <li><strong>Usage.</strong> Counts of Shuvs per day and per API key, your monthly allowance and credit balance. You see these in the portal; we also look at totals to plan capacity and enforce limits.</li>
@@ -59,7 +59,7 @@
 
 <h2>Retention</h2>
 <ul>
-  <li>Account data, Shuvs and replies are kept while your account exists so they can appear in your history and reach your agents.</li>
+  <li>Account data is kept while your account exists. Shuvs and replies are kept for your plan’s history period so they can appear in your history and reach your agents: 7 days on Free, 90 days on Basic and 1 year on Pro. Older ones are deleted automatically each day. The copy on your phone stays until you clear it.</li>
   <li>Recorded IP addresses are deleted automatically 90 days after they were last used. Request logs are kept for up to 7 days.</li>
   <li><strong>Backups.</strong> We back up the database daily and keep the 14 most recent copies in access-restricted storage; our hosting provider also keeps point-in-time recovery data for up to 30 days. Backups are used only to restore the service after a failure. Data you delete, or the data of a deleted account, disappears from all backups within 30 days, as older backups are replaced. If we ever restore a backup, we re-apply deletions made since it was taken.</li>
   <li>Blocks placed for abuse (an email, network or device) are kept while the block lasts and removed within 90 days after it ends.</li>
@@ -78,7 +78,7 @@
 
 <h2>Contact</h2>
 <p>Privacy, deletion and support requests: <a href="mailto:c4xbrx4lc@mozmail.com">c4xbrx4lc@mozmail.com</a></p>
-<footer>© 2026 13bfc3s · <a href="https://shuv.cloud/delete">Delete your Shuv account</a> · <a href="https://shuv.cloud/docs">API docs</a></footer>
+<footer>© 2026 13bfc3s · <a href="https://shuv.cloud/terms">Terms</a> · <a href="https://shuv.cloud/delete">Delete your Shuv account</a> · <a href="https://shuv.cloud/docs">API docs</a></footer>
 </main>
 </body>
 </html>
