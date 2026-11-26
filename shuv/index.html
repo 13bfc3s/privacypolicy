@@ -9,7 +9,7 @@
 <body>
 <main>
 <nav class="top"><b>SHUV</b><a href="https://shuv.cloud/docs">API docs</a><a href="https://shuv.cloud/terms">Terms</a><a href="https://shuv.cloud/privacy">Privacy</a><a href="https://shuv.cloud/delete">Delete your account</a></nav>
-<div class="eyebrow">Also published at <a href="https://shuv.cloud/privacy">shuv.cloud/privacy</a> · Last updated November 22, 2026</div>
+<div class="eyebrow">Also published at <a href="https://shuv.cloud/privacy">shuv.cloud/privacy</a> · Last updated November 26, 2026</div>
 <h1>Shuv privacy policy</h1>
 <p>Shuv is a two-way notification service. Software agents you authorize send you short messages (“Shuvs”) through the Shuv API, and you read and reply to them in the Shuv Android app (package <code>app.shuv.android</code>) or the Shuv web portal. Shuv is developed and operated by <strong>13bfc3s</strong>, the developer named on Shuv’s Google Play listing. This policy covers the Android app, the web portal and the Shuv API; the <a href="https://shuv.cloud/terms">terms of service</a> cover how you may use them. Shuv is currently an invite-only beta.</p>
 <div class="box"><strong>Want to delete your account?</strong> See <a href="https://shuv.cloud/delete">Delete your Shuv account</a> for the steps, what is deleted and what is kept.</div>
@@ -21,10 +21,14 @@
 <h3>Messages</h3>
 <p>The title and body of each Shuv your agents send, its priority and delivery status, and any reply you send. <strong>Standard Shuvs are not end-to-end encrypted:</strong> our server, and Google’s push service while delivering them, can technically read them. Do not put passwords, payment details, health information or other sensitive data in a standard Shuv.</p>
 <p><strong>End-to-end encryption (on by default in Shuv’s tools).</strong> Each phone publishes a public key. The <code>shuv</code> command, the Claude Code and Codex plugins and the Python SDK encrypt each Shuv to that key before sending (HPKE with X25519 and AES-256-GCM), so Shuv stores and forwards only ciphertext it cannot read, and your replies are encrypted back to the sender. Shuvs sent by other means, such as plain HTTP calls, are standard Shuvs as described above. Shuv still sees metadata: which account and phone a Shuv is for, the sending key’s name, when it was sent, its size, priority and delivery status. Shuv’s end-to-end encryption has not yet been independently reviewed.</p>
+<p><strong>Questions with answers and deadlines.</strong> When a sender lists answers for you to pick from (options), sets a deadline or a default answer, or gives a web address to notify (a webhook), we store those with the Shuv. They are <strong>not end-to-end encrypted</strong>, even when the title and body are, so the server can check your answer, apply the deadline and notify the sender; the answer you pick is stored the same way. A webhook’s signing secret is stored encrypted. When a Shuv is answered or expires, we send the answer to the sender’s webhook address. We record whether an answer came from a phone, the web portal or the deadline.</p>
+<h3>Teams</h3>
+<p>If you create or join a team, its members see each other’s email addresses and roles, and the owner sees the emails they invited. A team owner’s invite stores the invitee’s email until it is used, cancelled or the team is deleted, and lets that person sign up. Shuvs a teammate sends to the team are shown on your phone with the name of their sending key, and when you answer one, the sender’s agent receives your email address with the answer (as “answered by”). Leaving the team or deleting your account stops this; answers you already gave stay with the sender, without your email once your account is deleted.</p>
 <h3>Phones and API keys</h3>
 <p>When you connect a phone, we store its push-notification token (encrypted on our server), a random device ID, a one-way hash of the phone’s credential and, if you turned on encryption, its public key. The app also sends Android’s app-specific device ID (ANDROID_ID); we keep only a one-way keyed hash of it, used only to stop a phone banned for abuse from reconnecting. For each API key you create we store its name, permissions, expiry and last-used time, and only a one-way hash of the key itself.</p>
 <h3>Purchases</h3>
 <p>Payments are handled by <strong>Stripe</strong>, which acts as the merchant of record: Stripe collects your card or other payment details, billing address and email, and calculates and collects sales tax. Shuv never sees your full card number. Shuv receives and stores your Stripe customer ID, subscription status and renewal date, and for each credit-pack purchase the amount, date, status and credits granted, so we can apply your plan and show your purchase history.</p>
+<p>Purchases made in the Android app are handled by <strong>Google Play</strong> under your Google account and Google’s terms; Shuv never sees your payment details. The app sends Shuv the purchase token Google Play issues, and Shuv checks it with Google and stores the token, the plan or pack bought, its status and renewal date, linked to your Shuv account by its random account ID.</p>
 <h3>Usage, diagnostics and security records</h3>
 <ul>
   <li><strong>Usage.</strong> Counts of Shuvs per day and per API key, your monthly allowance and credit balance. You see these in the portal; we also look at totals to plan capacity and enforce limits.</li>
@@ -43,14 +47,15 @@
 </ul>
 
 <h2>How we use information</h2>
-<p>Only to provide Shuv: to sign you in, deliver Shuvs and return your replies to the agent that sent them, apply your plan and limits, process purchases, give support, keep the service secure and prevent abuse. We may suspend accounts, or block email addresses, networks or devices, that abuse the service. We do not use message content for advertising or to train machine-learning models.</p>
+<p>Only to provide Shuv: to sign you in, deliver Shuvs (to your teammates’ phones too, when a sender asks), return your replies to the agent that sent them and to its webhook, apply your plan and limits, process purchases, give support, keep the service secure and prevent abuse. We may suspend accounts, or block email addresses, networks or devices, that abuse the service. We do not use message content for advertising or to train machine-learning models.</p>
 
 <h2>Service providers</h2>
 <p>We share information only with the providers that run Shuv, and only for that purpose:</p>
 <ul>
   <li><strong>Google</strong>: Firebase Authentication for sign-in, Firebase Cloud Messaging for push delivery (a standard Shuv’s title, body and IDs pass through it; an encrypted Shuv passes through only as ciphertext), and Google Fonts for the web portal’s typeface. <a href="https://policies.google.com/privacy">Google privacy policy</a>.</li>
   <li><strong>Cloudflare</strong>: hosts the Shuv API, its database (Workers and D1) and the request logs described above. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.</li>
-  <li><strong>Stripe</strong>: payments, as merchant of record. <a href="https://stripe.com/privacy">Stripe privacy policy</a>.</li>
+  <li><strong>Stripe</strong>: payments on the web, as merchant of record. <a href="https://stripe.com/privacy">Stripe privacy policy</a>.</li>
+  <li><strong>Google Play</strong>: purchases in the Android app. <a href="https://policies.google.com/privacy">Google privacy policy</a>.</li>
 </ul>
 <p>We may also disclose information if the law requires it or to protect the safety or security of users or the service. All connections use HTTPS.</p>
 
@@ -64,7 +69,7 @@
   <li><strong>Backups.</strong> We back up the database daily and keep the 14 most recent copies in access-restricted storage; our hosting provider also keeps point-in-time recovery data for up to 30 days. Backups are used only to restore the service after a failure. Data you delete, or the data of a deleted account, disappears from all backups within 30 days, as older backups are replaced. If we ever restore a backup, we re-apply deletions made since it was taken.</li>
   <li>Blocks placed for abuse (an email, network or device) are kept while the block lasts and removed within 90 days after it ends.</li>
   <li>When an account is deleted, we keep a line in our operator log recording that a deletion happened, with the account’s random ID and the date, but no email or content. A record of a deletion request we handled (the email address and dates) is kept for one year to show it was fulfilled.</li>
-  <li>Stripe keeps its own records of completed purchases for as long as tax and financial laws require.</li>
+  <li>Stripe and Google Play keep their own records of completed purchases for as long as tax and financial laws require.</li>
 </ul>
 
 <h2>Your choices and rights</h2>
